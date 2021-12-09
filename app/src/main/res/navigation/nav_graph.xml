@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listCarsFragment">
+
+    <fragment
+        android:id="@+id/listCarsFragment"
+        android:name="com.example.carsinfo.ListCarsFragment"
+        android:label="fragment_list_cars"
+        tools:layout="@layout/fragment_list_cars" >
+        <action
+            android:id="@+id/action_listCarsFragment_to_detilseFragment"
+            app:destination="@id/detilseFragment" />
+        <action
+            android:id="@+id/action_listCarsFragment_to_carsInfoFragment"
+            app:destination="@id/carsInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detilseFragment"
+        android:name="com.example.carsinfo.DetilseFragment"
+        android:label="fragment_detilse"
+        tools:layout="@layout/fragment_detilse" >
+        <action
+            android:id="@+id/action_detilseFragment_to_carsInfoFragment"
+            app:destination="@id/carsInfoFragment" />
+        <argument
+            android:name="car_id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/carsInfoFragment"
+        android:name="com.example.carsinfo.AddCarsInfoFragment"
+        android:label="CarsInfoFragment">
+        <action
+            android:id="@+id/action_carsInfoFragment_to_listCarsFragment"
+            app:destination="@id/listCarsFragment"
+             />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="car_id"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </fragment>
+</navigation>
