@@ -15,7 +15,7 @@
             app:destination="@id/detilseFragment" />
         <action
             android:id="@+id/action_listCarsFragment_to_carsInfoFragment"
-            app:destination="@id/carsInfoFragment" />
+            app:destination="@id/AddCarsInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/detilseFragment"
@@ -24,13 +24,13 @@
         tools:layout="@layout/fragment_detilse" >
         <action
             android:id="@+id/action_detilseFragment_to_carsInfoFragment"
-            app:destination="@id/carsInfoFragment" />
+            app:destination="@id/AddCarsInfoFragment" />
         <argument
             android:name="car_id"
             app:argType="integer" />
     </fragment>
     <fragment
-        android:id="@+id/carsInfoFragment"
+        android:id="@+id/AddCarsInfoFragment"
         android:name="com.example.carsinfo.AddCarsInfoFragment"
         android:label="CarsInfoFragment">
         <action
@@ -38,11 +38,8 @@
             app:destination="@id/listCarsFragment"
              />
         <argument
-            android:name="title"
-            app:argType="string" />
-        <argument
-            android:name="car_id"
-            android:defaultValue="-1"
-            app:argType="integer" />
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="-1" />
     </fragment>
 </navigation>

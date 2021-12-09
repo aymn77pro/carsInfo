@@ -3,6 +3,8 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+
 }
 
 android {
@@ -10,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.carsinfo"
-        minSdk 27
+        minSdk 19
         targetSdk 31
         versionCode 1
         versionName "1.0"
