@@ -7,14 +7,14 @@ import androidx.room.RoomDatabase
 
 @Database(entities = [Cars::class], version = 1, exportSchema = false)
 abstract class CarsRoomDatabase : RoomDatabase() {
-    abstract fun carsDao():CarsDao
+    abstract fun carsDao(): CarsDao
 
-    companion object{
+    companion object {
         @Volatile
-        private var INSTANCE:CarsRoomDatabase? = null
+        private var INSTANCE: CarsRoomDatabase? = null
 
-        fun getDatabase(context: Context):CarsRoomDatabase{
-            return INSTANCE ?: synchronized(this){
+        fun getDatabase(context: Context): CarsRoomDatabase {
+            return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     CarsRoomDatabase::class.java,

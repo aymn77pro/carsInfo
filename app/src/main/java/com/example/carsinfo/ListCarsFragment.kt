@@ -14,13 +14,13 @@ import com.example.carsinfo.databinding.FragmentListCarsBinding
 
 class ListCarsFragment : Fragment() {
 
-    private val viewModel:CarsViewModel by activityViewModels{
+    private val viewModel: CarsViewModel by activityViewModels {
         CarsViewModelFactory(
             (activity?.application as CarsInfoApp).database.carsDao()
         )
     }
 
-    private var _binding : FragmentListCarsBinding? = null
+    private var _binding: FragmentListCarsBinding? = null
     private val binding get() = _binding
 
     override fun onCreateView(
@@ -28,26 +28,26 @@ class ListCarsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentListCarsBinding.inflate(inflater,container,false)
+        _binding = FragmentListCarsBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adabter = CarsListAdapter{
+        val adabter = CarsListAdapter {
             val action = ListCarsFragmentDirections.actionListCarsFragmentToDetilseFragment(it.id)
             this.findNavController().navigate(action)
         }
         binding?.recyclerView?.layoutManager = LinearLayoutManager(this.context)
         binding?.recyclerView?.adapter = adabter
-        viewModel.allCarsInfo.observe(this.viewLifecycleOwner){car ->
+        viewModel.allCarsInfo.observe(this.viewLifecycleOwner) { car ->
             car.let { adabter.submitList(it) }
         }
 
-    binding?.addNote?.setOnClickListener {
-        val action = ListCarsFragmentDirections.actionListCarsFragmentToCarsInfoFragment()
-        findNavController().navigate(action)
-    }
+        binding?.addNote?.setOnClickListener {
+            val action = ListCarsFragmentDirections.actionListCarsFragmentToCarsInfoFragment()
+            findNavController().navigate(action)
+        }
     }
 
 }
